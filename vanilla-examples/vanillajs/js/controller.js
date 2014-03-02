@@ -44,6 +44,10 @@
 		that.view.bind('toggleAll', function (status) {
 			that.toggleAll(status.completed);
 		});
+
+                that.view.bind('itemAssigned', function(item) {
+                        that.itemAssigned(item.id, item.assignedTo);
+                });
 	}
 
 	/**
@@ -207,6 +211,15 @@
 		that._filter();
 	};
 
+        /**
+         *  Given a name, updates the model so that it is assigned to that person.
+         *  @param {number} id The ID of the element for assigning
+         *  @param {assignedTo} string The name of the person to assign it to
+         */
+        Controller.prototype.itemAssigned = function (id, assignedTo) {
+                this.model.update(id, { assignedTo: assignedTo }, function () {});
+        }
+
 	/**
 	 * Updates the pieces of the page which change depending on the remaining
 	 * number of todos.
@@ -261,6 +274,7 @@
 
 		this.view.render('setFilter', currentPage);
 	};
+
 
 	// Export to window
 	window.app = window.app || {};

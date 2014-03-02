@@ -401,4 +401,17 @@ describe('controller', function () {
             expect(model.update).not.toHaveBeenCalled();
         });
     });
+
+    describe('assigning todos', function() {
+        it('should persist assignment changes', function() {
+            var todo = {id: 21, title: 'my todo', completed: false, assignedTo: 'None'};
+            setUpModel([todo]);
+
+            subject.setView('');
+
+            view.trigger('itemAssigned', {id: 21, assignedTo: 'Ernie'});
+
+            expect(model.update).toHaveBeenCalledWith(21, {assignedTo: 'Ernie'}, jasmine.any(Function));
+        });
+    });
 });
