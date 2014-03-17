@@ -229,6 +229,14 @@
 
         } else if (event === 'itemEditCancel') {
             that._bindItemEditCancel(handler);
+
+        } else if (event === 'itemAssigned') {
+            $live('#todo-list .assign-btn-grp .toggle-btn input', 'click', function () {
+                handler({
+                    id: that._itemId(this),
+                    assignedTo: this.id
+                });
+            });
         }
     };
 
