@@ -41,8 +41,8 @@
     };
 
     View.prototype._setFilter = function (currentPage) {
-        qs('#filters .selected').className = '';
-        qs('#filters [href="#/' + currentPage + '"]').className = 'selected';
+        qs('#filters .selected').classList.remove('selected');
+        qs('#filters [href="#/' + currentPage + '"]').classList.add('selected');
     };
 
     View.prototype._elementComplete = function (id, completed) {
@@ -52,7 +52,7 @@
             return;
         }
 
-        listItem.className = completed ? 'completed' : '';
+        listItem.classList.remove('completed');
 
         // In case it was toggled from an event and not by clicking the checkbox
         qs('input', listItem).checked = completed;
@@ -65,10 +65,10 @@
             return;
         }
 
-        listItem.className = listItem.className + ' editing';
+        listItem.classList.add('editing');
 
         var input = document.createElement('input');
-        input.className = 'edit';
+        input.classList.add('edit');
 
         listItem.appendChild(input);
         input.focus();
@@ -85,7 +85,7 @@
         var input = qs('input.edit', listItem);
         listItem.removeChild(input);
 
-        listItem.className = listItem.className.replace('editing', '');
+        listItem.classList.remove('editing');
 
         qsa('label', listItem).forEach(function (label) {
             label.textContent = title;
