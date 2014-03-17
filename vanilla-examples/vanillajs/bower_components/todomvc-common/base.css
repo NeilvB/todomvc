@@ -294,6 +294,15 @@ label[for='toggle-all'] {
 	margin-bottom: -1px;
 }
 
+#todo-list .toggle-btn {
+	display: inline-block;	
+	cursor: pointer;
+}
+
+input[type="radio"].toggle {
+  display: none;
+}
+
 #footer {
 	color: #777;
 	padding: 0 15px;
