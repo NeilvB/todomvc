@@ -109,7 +109,7 @@
             assignedToggle = qs(assignedTo, listItem);
             assignedToggle.checked = true;
         }
-    }
+    };
 
     View.prototype.render = function (viewCmd, parameter) {
         var that = this;
