@@ -92,11 +92,30 @@
         });
     };
 
+    View.prototype._showEntries = function (todos) {
+        var i, l;
+        var listItem;
+        var assignedTo;
+        var assignedToggle;
+
+        this.$todoList.innerHTML = this.template.show(todos);
+
+        for (i = 0, l = todos.length; i < l; i++) {
+            listItem = qs('[data-id="' + todos[i].id + '"]');
+            if (!listItem)
+                continue;
+
+            assignedTo = '#' + (todos[i].assignedTo || 'none');
+            assignedToggle = qs(assignedTo, listItem);
+            assignedToggle.checked = true;
+        }
+    }
+
     View.prototype.render = function (viewCmd, parameter) {
         var that = this;
         var viewCommands = {
             showEntries: function () {
-                that.$todoList.innerHTML = that.template.show(parameter);
+                that._showEntries(parameter);
             },
             removeItem: function () {
                 that._removeItem(parameter);
