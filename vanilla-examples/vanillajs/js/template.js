@@ -12,7 +12,7 @@
                 =       '<li data-id="{{id}}" class="{{completed}}">'
                 +               '<div class="view">'
                 +                       '<input class="toggle" type="checkbox" {{checked}}>'
-                +                       '<label>{{title}}</label>'
+                +                       '<label class={{assignedTo}}>{{title}}</label>'
                 +                       '<button class="destroy"></button>'
                 +                       '<div class="assign-btn-grp">'    
                 +                               '<label class="toggle-btn">'                          
@@ -67,6 +67,7 @@
                         template = template.replace(/{{title}}/g, data[i].title);
                         template = template.replace('{{completed}}', completed);
                         template = template.replace('{{checked}}', checked);
+                        template = template.replace('{{assignedTo}}', data[i].assignedTo);
 
                         view = view + template;
                 }
