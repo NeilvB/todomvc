@@ -105,11 +105,21 @@
             if (!listItem)
                 continue;
 
-            assignedTo = '#' + (todos[i].assignedTo || 'none');
-            assignedToggle = qs(assignedTo, listItem);
+            assignedTo = todos[i].assignedTo || 'none';
+            assignedToggle = qs('#' + assignedTo, listItem);
             assignedToggle.checked = true;
         }
     };
+
+    View.prototype._itemAssignedDone = function (id, assignedTo) {
+        var listItemLabel = qs('[data-id="' + id + '"]' + ' label');
+
+        if (!listItemLabel) {
+            return;
+        }
+
+        listItemLabel.className = assignedTo;
+    }
 
     View.prototype.render = function (viewCmd, parameter) {
         var that = this;
@@ -146,6 +156,9 @@
             },
             editItemDone: function () {
                 that._editItemDone(parameter.id, parameter.title);
+            },
+            itemAssignedDone: function () {
+                that._itemAssignedDone(parameter.id, parameter.assignedTo);
             }
         };
 
