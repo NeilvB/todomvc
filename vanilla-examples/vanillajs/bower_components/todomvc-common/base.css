@@ -303,6 +303,14 @@ input[type="radio"].toggle {
   display: none;
 }
 
+#todo-list .ernie {
+  color: orange;
+}
+
+#todo-list .bert {
+  color: yellow;
+}
+
 #footer {
 	color: #777;
 	padding: 0 15px;
