@@ -217,8 +217,11 @@
          *  @param {assignedTo} string The name of the person to assign it to
          */
         Controller.prototype.itemAssigned = function (id, assignedTo) {
-                this.model.update(id, { assignedTo: assignedTo }, function () {});
-        }
+                var that = this;
+                this.model.update(id, { assignedTo: assignedTo }, function () {
+                    that.view.render('itemAssignedDone', {id: id, assignedTo: assignedTo});
+                });
+        };
 
 	/**
 	 * Updates the pieces of the page which change depending on the remaining
