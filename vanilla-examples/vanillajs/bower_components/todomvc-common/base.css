@@ -239,7 +239,7 @@ label[for='toggle-all'] {
 	position: relative;
 }
 
-#todo-list li label {
+#todo-list li .view > label {
 	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
@@ -301,6 +301,23 @@ label[for='toggle-all'] {
 
 input[type="radio"].toggle {
   display: none;
+}
+
+#todo-list .assign-btn-grp {
+  border: groove;
+  position: absolute;
+  left: 550px;
+  width: 300px;
+  bottom: 8px;
+  display: none;
+}
+
+#todo-list li:hover .assign-btn-grp {
+  display: block;
+}
+
+#todo-list .assign-btn-grp label {
+  padding: 0.3em;
 }
 
 #todo-list .ernie {
