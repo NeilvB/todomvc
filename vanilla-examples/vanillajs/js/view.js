@@ -52,7 +52,7 @@
             return;
         }
 
-        listItem.classList.remove('completed');
+        listItem.classList.toggle('completed');
 
         // In case it was toggled from an event and not by clicking the checkbox
         qs('input', listItem).checked = completed;
